@@ -9,6 +9,8 @@ Client-side Visual English Language Analysis.
 ### Selecting and deselecting nodes.
 ------------------------------------
 
+(NOTE: You can pan and zoom with mouse or touch input)
+
 #### With The Graph
 
 Watch: [Node Selection Graph video](https://github.com/runexec/WordyBirdy/raw/master/readme/node-select.ogv)
