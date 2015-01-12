@@ -43,12 +43,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Filter Helpers
 
 (def valid-ints
-  (apply hash-set
-         (map #(->> % (str "\\") reader/read-string)
-              (range 0 10))))
+  (->> (range 10)
+       (map #(->> % (str "\\") reader/read-string))
+       (apply hash-set)))
 
 (defn suspect-number? [word]
-  (when-not (nil? word)
+  (if word
     (every? (fn [n]
               (seq
                (filter valid-ints [n])))
@@ -56,20 +56,20 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Text Input Stat View
 
-(defcomponent stat-view [app _]
+(defcomponent stat-view
+  [{:keys [wcount
+           lcount
+           ncount]
+    :or {wcount 0
+         lcount 0
+         ncount 0}}
+   _]
   (render
    [_]
-   (let [{:keys [wcount
-                 lcount
-                 ncount]
-          :or {wcount 0
-               lcount 0
-               ncount 0}} app]
-       (dom/div {:id "stats"}
-                (dom/span "Words: " wcount " ")
-                (dom/span ", Lines: " lcount " ")
-                (dom/span ", Numbers: " ncount " ")))))
-
+   (dom/div {:id "stats"}
+            (dom/span "Words: " wcount " ")
+            (dom/span ", Lines: " lcount " ")
+            (dom/span ", Numbers: " ncount " "))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Text Input
 
@@ -93,9 +93,6 @@
                         (text-input-words {:txt txt}))]
     {:numbers numbers
      :count (count numbers)}))
-
-(defn text-input-number-count [{:keys [txt]}]
-  (count (text-input-number-count {:txt txt})))
 
 (defn text-input-did-update [transactional-state]
   (let [ts transactional-state
@@ -203,7 +200,7 @@
         msg (str "Background Color: The background "
                  "is transparent on cancel")
         color (js/prompt msg)
-        msg (str "Image Scale")
+        msg "Image Scale"
         scale (js/prompt msg 0.8)
         options (clj->js
                  (as-> {} options
