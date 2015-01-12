@@ -11,19 +11,19 @@ Client-side Visual English Language Analysis.
 
 #### With The Graph
 
-Watch: [Node Selection Graph video](readme/node-select.ogv)
+Watch: [Node Selection Graph video](https://github.com/runexec/WordyBirdy/raw/master/readme/node-select.ogv)
 
 All unrelated nodes are hidden until the node of focus is deselected. You can deselect a node by clicking another node or clicking off to the side. 
 
 #### With The Sentence 
 
-Watch: [Node Selection Sentence Text video](readme/node-text-select.ogv)
+Watch: [Node Selection Sentence Text video](https://github.com/runexec/WordyBirdy/raw/master/readme/node-text-select.ogv)
 
 Click any word within any sentence, and all nodes related to the word will be displayed.
 
 #### With Word Type
 
-Watch: [Node Selection Word Type  video](readme/node-word-type.ogv)
+Watch: [Node Selection Word Type  video](https://github.com/runexec/WordyBirdy/raw/master/readme/node-word-type.ogv)
 
 You can hide or display nodes depending on the type of words you wish to display.
 
